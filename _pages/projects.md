@@ -1,11 +1,10 @@
 ---
 layout: page
-title: projects
+title: Side Quests
 permalink: /projects/
-description: A growing collection of your cool projects.
+description:
 nav: true
-nav_order: 3
-display_categories: [work, fun]
+nav_order: 4
 horizontal: false
 ---
 
