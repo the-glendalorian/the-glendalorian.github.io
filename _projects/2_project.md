@@ -71,17 +71,6 @@ giscus_comments: false
     </div>
 </div>
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/cookie.jpg" title="wookie cookies" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/kybercrystals.jpg" title="yodalicious" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
 <div class="caption">
     Baking Yodalicious galactic treats!
 </div>
@@ -101,14 +90,8 @@ giscus_comments: false
     </div>
 </div>
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/lego.jpg" title="lego" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
 <div class="caption">
-    Board game and Lego building night!
+    Board game night!
 </div>
 
 <div class="row justify-content-sm-center">
