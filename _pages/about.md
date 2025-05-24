@@ -20,7 +20,7 @@ announcements:
   limit: 6 # leave blank to include all the news in the `_news` folder
 ---
 
-Hello there! I'm a sophomore majoring in <a href="https://www.cs.cmu.edu/bs-in-artificial-intelligence/">Artificial Intelligence</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>.
+Hello there! I'm a junior majoring in <a href="https://www.cs.cmu.edu/bs-in-artificial-intelligence/">Artificial Intelligence</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>.
 
 To me, <a href="/publications">AI research</a> is extremely rewarding and I'm excited to solve real-world problems with AI.
 

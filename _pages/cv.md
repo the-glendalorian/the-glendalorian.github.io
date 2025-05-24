@@ -5,5 +5,5 @@ title: CV
 nav: true
 nav_order: 3
 cv_pdf: cv.pdf # you can also use external links here
-description: Download my latest CV here!
+description: <p>Download my latest CV <a href="/assets/pdf/cv.pdf">here</a>!</p>
 ---

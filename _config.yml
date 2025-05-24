@@ -6,7 +6,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Glenda
 middle_name: H.
 last_name: Tan
-contact_note: Contact me
+contact_note: Contact me!
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
