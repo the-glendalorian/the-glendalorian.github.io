@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glenda H. Tan — Assistive ML for Caregiving</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFDFB;
+    --white:#FFFFFF;
+    --ink:#2A211E;
+    --ink-soft:#5C514D;
+    --heart:#D64550;
+    --heart-deep:#8E2A32;
+    --blush:#F7DEDD;
+    --blush-soft:#FBEEEE;
+    --line:#EFE4E1;
+    --radius:14px;
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Figtree', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--heart-deep);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--heart);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(255,253,251,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.01em;
+  }
+  .nav-links{
+    display:flex;
+    gap:24px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-size:0.92rem;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-weight:600;
+    transition:color 0.15s ease;
+  }
+  .nav-links a:hover{color:var(--heart-deep);}
+  .nav-links a.active{color:var(--heart-deep);}
+
+  .nav-toggle{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    border:1px solid var(--line);
+    background:var(--white);
+    color:var(--ink);
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .nav-toggle:hover{border-color:var(--heart); color:var(--heart-deep);}
+  .nav-toggle svg{display:block;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:88px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:52px;
+    align-items:stretch;
+  }
+  .hero-photo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .photo-frame{
+    height:100%;
+    aspect-ratio:1/1;
+    max-width:260px;
+    max-height:260px;
+    min-width:160px;
+    min-height:160px;
+    border-radius:50%;
+    background:var(--blush-soft);
+    border:2px dashed var(--blush);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    overflow:hidden;
+    color:var(--heart-deep);
+    text-align:center;
+    padding:16px;
+  }
+  .photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  .photo-frame-label{
+    font-size:0.82rem;
+    font-weight:600;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.82rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--heart-deep);
+    background:var(--blush-soft);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--heart);
+    animation:dotpulse 2.2s ease-in-out infinite;
+  }
+  @keyframes dotpulse{
+    0%,100%{transform:scale(1); opacity:1;}
+    50%{transform:scale(1.5); opacity:0.5;}
+  }
+
+  h1.headline{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.12;
+    max-width:14ch;
+    font-weight:500;
+  }
+  h1.headline em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--heart-deep);
+  }
+
+  .hero-sub{
+    margin-top:22px;
+    max-width:52ch;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+  }
+
+  .hero-interests{
+    margin-top:16px;
+    font-size:0.92rem;
+    font-weight:600;
+    color:var(--heart-deep);
+    max-width:56ch;
+  }
+
+  .hero-links{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:11px 20px;
+    border-radius:999px;
+    border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--heart);
+    color:var(--white);
+    box-shadow:0 6px 16px rgba(214,69,80,0.32);
+  }
+  .btn-primary:hover{background:var(--heart-deep); transform:translateY(-1px); box-shadow:0 8px 20px rgba(214,69,80,0.4);}
+  .btn-ghost{
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--heart); color:var(--heart-deep);}
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-top:1px solid var(--line);
+  }
+  .timeline-item{
+    display:flex;
+    gap:32px;
+    padding:34px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .timeline-item:last-child{border-bottom:none; padding-bottom:8px;}
+  .timeline-date{
+    min-width:150px;
+    flex-shrink:0;
+    font-size:0.8rem;
+    font-weight:700;
+    color:var(--heart-deep);
+    background:var(--blush-soft);
+    border-radius:999px;
+    padding:6px 14px;
+    height:fit-content;
+    text-align:center;
+  }
+  .timeline-body h4{
+    margin:0 0 4px;
+    font-size:1.05rem;
+    font-weight:600;
+    line-height:1.4;
+  }
+  .timeline-org{
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+  .timeline-body p{
+    margin:0;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .timeline-bullets{
+    margin:0;
+    padding-left:18px;
+    color:var(--ink-soft);
+    font-size:0.93rem;
+    line-height:1.65;
+  }
+  .timeline-bullets li{margin-bottom:10px;}
+  .timeline-bullets li:last-child{margin-bottom:0;}
+  .timeline-bullets li::marker{color:var(--heart);}
+  .timeline-note{
+    margin:66px 0 0;
+    font-size:0.87rem;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .timeline-note strong{color:var(--heart-deep);}
+  .timeline-note + .timeline-note{
+    margin-top:6px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-category{margin-bottom:48px;}
+  .projects-category:last-child{margin-bottom:0;}
+  .projects-category-title{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    font-weight:500;
+    color:var(--ink);
+    margin:0 0 20px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .project-card-v2{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .project-card-v2[data-project]{cursor:pointer;}
+  .project-card-v2[data-external-link]{cursor:pointer;}
+  .project-card-v2:hover{border-color:var(--heart); transform:translateY(-2px);}
+  .project-thumb{
+    aspect-ratio:16/10;
+    background:var(--blush-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--heart-deep);
+    border-bottom:1px solid var(--line);
+    opacity:0.75;
+    text-align:center;
+    padding:12px;
+  }
+  .thumb-label{
+    font-size:0.82rem;
+    font-weight:600;
+  }
+  .btn-learn-more.btn-learn-more-link{
+    text-decoration:none;
+    display:inline-block;
+  }
+  .project-card-body{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .project-card-body h4{
+    font-size:1.02rem;
+    margin:0 0 4px;
+  }
+  .project-dates{
+    font-size:0.76rem;
+    font-weight:700;
+    color:var(--heart-deep);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin:0 0 10px;
+  }
+  .project-card-body .project-desc{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+    flex:1;
+  }
+  .btn-learn-more{
+    align-self:flex-start;
+    font-family:'Figtree', sans-serif;
+    font-size:0.82rem;
+    font-weight:700;
+    padding:8px 16px;
+    border-radius:999px;
+    border:1.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .btn-learn-more:hover{border-color:var(--heart); color:var(--heart-deep); background:var(--blush-soft);}
+
+  /* ---------- PROJECT MODAL ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(36,26,23,0.55);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  body.modal-open{overflow:hidden;}
+  .modal-box{
+    background:var(--white);
+    border-radius:20px;
+    max-width:760px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    padding:36px;
+    position:relative;
+    box-shadow:0 24px 60px rgba(0,0,0,0.28);
+  }
+  .modal-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    color:var(--ink);
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .modal-close:hover{border-color:var(--heart); color:var(--heart-deep);}
+  .modal-tag{
+    font-size:0.78rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--heart-deep);
+    margin-bottom:10px;
+  }
+  .modal-box h3{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:500;
+    margin:0 0 6px;
+    max-width:88%;
+  }
+  .modal-dates{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .modal-desc{
+    font-size:0.95rem;
+    color:var(--ink-soft);
+    margin:0 0 26px;
+    line-height:1.65;
+  }
+  .modal-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+  .modal-gallery-img{
+    aspect-ratio:4/3;
+    background:var(--blush-soft);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--heart-deep);
+    opacity:0.75;
+    margin-bottom:8px;
+  }
+  .modal-caption{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0;
+  }
+  #modalBody p{
+    font-size:0.95rem;
+    color:var(--ink-soft);
+    line-height:1.7;
+    margin:0 0 18px;
+  }
+  #modalBody p:last-child{margin-bottom:0;}
+  .modal-figure{
+    aspect-ratio:16/10;
+    background:var(--blush-soft);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--heart-deep);
+    opacity:0.75;
+    margin:22px 0 8px;
+    font-size:0.82rem;
+    font-weight:600;
+    text-align:center;
+    padding:12px;
+  }
+  .modal-figure-caption{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    line-height:1.55;
+  }
+  /* Background blur while a project modal is open */
+  body.modal-open nav,
+  body.modal-open header.hero,
+  body.modal-open section,
+  body.modal-open footer{
+    filter:blur(5px);
+    transition:filter 0.2s ease;
+  }
+
+  /* ---------- AWARDS ---------- */
+  .awards-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .award-card{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+    width:100%;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .award-card:hover{border-color:var(--heart); transform:translateY(-2px);}
+  .award-icon{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:var(--blush-soft);
+    color:var(--heart-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .award-body h4{
+    margin:0 0 4px;
+    font-size:1rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .award-issuer{
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--heart-deep);
+    margin:0 0 2px;
+  }
+  .award-assoc{
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    opacity:0.85;
+    margin:0 0 10px;
+    font-style:italic;
+  }
+  .award-desc{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- RESUME / SKILLS ---------- */
+  .skills-groups{
+    display:grid;
+    gap:36px;
+  }
+  .skill-category-title{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:500;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  .skill-category .skill-group{
+    margin-bottom:16px;
+  }
+  .skill-category .skill-group:last-child{
+    margin-bottom:0;
+  }
+  .skill-group h4{
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--heart-deep);
+    margin-bottom:10px;
+    font-weight:700;
+  }
+  .skill-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .skill-chip{
+    font-size:0.85rem;
+    font-weight:600;
+    background:var(--white);
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    padding:6px 13px;
+    border-radius:999px;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .skill-chip:hover{border-color:var(--heart); color:var(--heart-deep);}
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  #about{background:var(--white);}
+  #education{background:var(--blush-soft);}
+  #experience{background:var(--paper);}
+  #projects{background:var(--white);}
+  #skills{background:var(--paper);}
+  #awards{background:var(--blush-soft);}
+
+  #publications{
+    background:#241A17;
+    color:#F3E9E6;
+  }
+  #publications .section-label{color:var(--blush);}
+  #publications h2.section-title{color:#FFFFFF;}
+
+  .section-label{
+    font-size:0.82rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--heart-deep);
+    margin-bottom:10px;
+  }
+  h2.section-title{
+    font-size:1.9rem;
+    font-weight:500;
+    margin-bottom:28px;
+    max-width:22ch;
+  }
+
+  .about-text{
+    border-left:3px solid var(--heart);
+    padding-left:28px;
+  }
+  .about-text p{margin:0 0 16px; color:var(--ink-soft); font-size:1.02rem;}
+  .about-text p:last-child{margin-bottom:0;}
+
+  .edu-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+  }
+  .edu-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:4px solid var(--heart);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+  .edu-degree{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    font-weight:500;
+    color:var(--ink);
+    line-height:1.35;
+  }
+  .edu-school{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+  .edu-years{
+    font-size:0.78rem;
+    color:var(--heart-deep);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-top:12px;
+  }
+
+  /* ---------- RESEARCH CARDS ---------- */
+  .research-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .research-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 24px;
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .research-card:hover{
+    border-color:var(--heart);
+    transform:translateY(-2px);
+  }
+  .research-icon{
+    width:38px;height:38px;
+    border-radius:10px;
+    background:var(--blush-soft);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;
+    color:var(--heart-deep);
+  }
+  .research-card h3{
+    font-size:1.12rem;
+    margin-bottom:8px;
+  }
+  .research-card p{
+    color:var(--ink-soft);
+    font-size:0.94rem;
+    margin:0;
+  }
+  .research-card{cursor:pointer;}
+  .research-more{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:16px;
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--heart-deep);
+  }
+  .research-more svg{transition:transform 0.2s ease;}
+  .research-card.open .research-more svg{transform:rotate(180deg);}
+  .research-detail{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  }
+  .research-card.open .research-detail{
+    max-height:220px;
+    opacity:1;
+    margin-top:12px;
+  }
+  .research-detail p{
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    margin:0;
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:none;
+  }
+
+  /* ---------- FEATURED PROJECT ---------- */
+  .project-card{
+    background:linear-gradient(135deg, var(--white) 0%, var(--blush-soft) 100%);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px;
+    position:relative;
+    overflow:hidden;
+  }
+  .project-tag{
+    display:inline-block;
+    font-size:0.75rem;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--heart-deep);
+    background:var(--white);
+    border:1px solid var(--blush);
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+  .project-card h3{
+    font-size:1.55rem;
+    margin-bottom:14px;
+    max-width:20ch;
+  }
+  .project-card p{
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0 0 20px;
+  }
+  .project-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .chip{
+    font-size:0.82rem;
+    font-weight:600;
+    background:var(--white);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    padding:6px 13px;
+    border-radius:999px;
+  }
+
+  /* ---------- INTERACTIVE DEMO ---------- */
+  .demo-card{
+    margin-top:26px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 24px;
+  }
+  .demo-title{
+    font-size:0.8rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--heart-deep);
+    margin-bottom:14px;
+  }
+  .demo-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .demo-row:last-of-type{border-bottom:none;}
+  .demo-row span{
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .switch{
+    position:relative;
+    display:inline-block;
+    width:42px;
+    height:24px;
+    flex-shrink:0;
+  }
+  .switch input{opacity:0; width:0; height:0;}
+  .slider{
+    position:absolute;
+    cursor:pointer;
+    inset:0;
+    background:var(--line);
+    border-radius:999px;
+    transition:background 0.2s ease;
+  }
+  .slider::before{
+    content:"";
+    position:absolute;
+    height:18px;
+    width:18px;
+    left:3px;
+    bottom:3px;
+    background:var(--white);
+    border-radius:50%;
+    transition:transform 0.2s ease;
+    box-shadow:0 1px 2px rgba(0,0,0,0.15);
+  }
+  .switch input:checked + .slider{background:var(--heart);}
+  .switch input:checked + .slider::before{transform:translateX(18px);}
+  .demo-status{
+    margin-top:18px;
+    padding:14px 16px;
+    background:var(--blush-soft);
+    border-radius:10px;
+    font-size:0.88rem;
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .demo-status strong{color:var(--heart-deep);}
+
+  /* ---------- PUBLICATIONS ---------- */
+  .pub-year-group{
+    margin-bottom:40px;
+  }
+  .pub-year-group:last-child{margin-bottom:0;}
+  .pub-year-heading{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    font-weight:500;
+    color:var(--blush);
+    margin:0 0 18px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+  .pub-entry{
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .pub-entry:last-child{border-bottom:none;}
+  .pub-title{
+    font-size:1.03rem;
+    font-weight:600;
+    color:#FFFFFF;
+    margin:0 0 6px;
+    line-height:1.45;
+  }
+  .pub-authors{
+    font-size:0.88rem;
+    color:#D8C5C0;
+    margin:0 0 3px;
+  }
+  .pub-venue{
+    font-size:0.85rem;
+    color:#D8C5C0;
+    font-style:italic;
+    margin:0 0 14px;
+  }
+  .pub-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .pub-btn{
+    font-family:'Figtree', sans-serif;
+    font-size:0.78rem;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.32);
+    background:transparent;
+    color:#F3E9E6;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    transition:border-color 0.15s ease, background 0.15s ease;
+  }
+  .pub-btn:hover{border-color:var(--heart); background:rgba(214,69,80,0.18);}
+  .pub-btn svg{transition:transform 0.2s ease;}
+  .pub-btn.open svg{transform:rotate(180deg);}
+  .pub-expand{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease;
+  }
+  .pub-expand.open{
+    max-height:900px;
+    opacity:1;
+    margin-top:14px;
+  }
+  .pub-expand p{
+    font-size:0.87rem;
+    color:#D8C5C0;
+    line-height:1.7;
+    margin:0 0 6px;
+  }
+  .pub-expand p:last-child{margin-bottom:0;}
+  .pub-expand ul{
+    margin:0;
+    padding-left:18px;
+    font-size:0.87rem;
+    color:#D8C5C0;
+    line-height:1.7;
+  }
+  .pub-expand ul li{margin-bottom:4px;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  #contact{
+    background:var(--blush-soft);
+  }
+  .contact-inner{
+    text-align:center;
+  }
+  .contact-inner h2{
+    color:var(--heart-deep);
+    font-size:1.8rem;
+    margin-bottom:10px;
+  }
+  .contact-inner p{
+    color:var(--ink-soft);
+    max-width:44ch;
+    margin:0 auto 24px;
+  }
+  .contact-links{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn-secondary{
+    background:var(--blush);
+    color:var(--heart-deep);
+    border-color:var(--blush);
+  }
+  .btn-secondary:hover{
+    background:var(--heart);
+    color:var(--white);
+    transform:translateY(-1px);
+  }
+  .contact-links .btn-ghost{
+    border-width:1.5px;
+    border-color:rgba(42,33,30,0.4);
+  }
+  .contact-links .btn-ghost:hover{
+    border-color:var(--heart);
+  }
+
+  footer{
+    background:var(--blush-soft);
+    padding:32px 0 48px;
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  footer .footer-divider{
+    max-width:var(--maxw);
+    margin:0 auto 28px;
+    padding:0 28px;
+  }
+  footer .footer-divider hr{
+    border:none;
+    border-top:1px solid var(--blush);
+    margin:0;
+  }
+
+  @media (max-width: 980px){
+    .project-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+
+  @media (max-width: 760px){
+    .wrap{padding:0 20px;}
+
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      flex-direction:column;
+      gap:0;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 12px 24px rgba(42,33,30,0.08);
+      padding:8px 0;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links li{width:100%;}
+    .nav-links a{
+      display:block;
+      padding:14px 20px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-links li:last-child a{border-bottom:none;}
+
+    .about-grid{grid-template-columns:1fr;}
+    .research-grid{grid-template-columns:1fr;}
+    .pub-item{flex-direction:column; gap:4px;}
+    .project-grid{grid-template-columns:1fr;}
+
+    header.hero{padding:56px 0 40px;}
+    .hero-grid{grid-template-columns:1fr; gap:28px;}
+    .hero-photo{order:-1;}
+    .photo-frame{max-width:150px; max-height:150px; aspect-ratio:1/1; height:150px;}
+
+    .edu-grid{grid-template-columns:1fr;}
+
+    section{padding:44px 0;}
+    h2.section-title{font-size:1.5rem;}
+
+    .timeline-item{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:16px;
+      padding:26px 0;
+    }
+    .timeline-date{margin-bottom:0;}
+
+    .modal-box{padding:24px; max-height:88vh;}
+    .modal-gallery{grid-template-columns:1fr;}
+
+    .project-card{padding:24px;}
+
+    .contact-links{gap:10px;}
+    .contact-links .btn{font-size:0.88rem; padding:9px 16px;}
+  }
+
+  @media (max-width: 460px){
+    h1.headline{font-size:1.85rem;}
+    .nav-name{font-size:0.95rem;}
+    .eyebrow{font-size:0.74rem; padding:5px 12px;}
+    .award-card{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-name">Glenda H. Tan</div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <svg id="navToggleIconOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg id="navToggleIconClose" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none;"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow"><span class="dot"></span> PhD Student · ECE, Carnegie Mellon</span>
+        <h1 class="headline">Glenda Hui-En Tan</h1>
+        <p class="hero-sub">
+          Hello there! I'm a PhD researcher at Carnegie Mellon University passionate
+          about leveraging ML to transform healthcare and caregiving.
+        </p>
+        <p class="hero-interests">
+          Research Interests: Machine Learning for Healthcare and Caregiving &nbsp;|&nbsp; AI-Driven Assistive Technologies &nbsp;|&nbsp; Computer Vision
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <span class="photo-frame-label">Add your photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <div class="wrap">
+    <div class="section-label">About</div>
+    <div class="about-text">
+      <p>
+        My motivation to work in healthcare AI began in high school when my
+        grandfather was diagnosed with colorectal cancer, driving me to explore
+        how non-invasive deep learning models could enable earlier, life-saving
+        detection. Today, my research sits at the intersection of computer vision,
+        generative models, and assistive robotics—focused on building trustworthy
+        AI systems that assist older adults, patients and clinicians in real-world
+        environments.
+      </p>
+      <p>
+        Across my research career, I've published first-author papers in predictive
+        health modeling for colorectal cancer and COVID-19 variants, engineered an
+        assistive kitchen tracking system for older adults at the CMU Robotics
+        Institute, and mentored 100+ CS students as Head TA for CMU's flagship
+        Concepts of AI course.
+      </p>
+      <p>
+        Outside the lab, you can find me building a life-sized BB-8 droid, dueling
+        with lightsabers, or creating electric organ covers for my
+        YouTube channel (<a href="https://www.youtube.com/@theglendalorian" target="_blank" rel="noopener">@theglendalorian</a>).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="reveal">
+  <div class="wrap">
+    <div class="section-label">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Doctor of Philosophy, Electrical & Computer Engineering</div>
+        <div class="edu-school">Carnegie Mellon College of Engineering</div>
+        <div class="edu-years">2026 — Present</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Science, Artificial Intelligence</div>
+        <div class="edu-school">Carnegie Mellon School of Computer Science</div>
+        <div class="edu-years">2023 — 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="reveal">
+  <div class="wrap">
+    <div class="section-label">Experience</div>
+    <ul class="timeline">
+      <li class="timeline-item">
+        <div class="timeline-date">May 2024 — Present</div>
+        <div class="timeline-body">
+          <h4>Research Assistant</h4>
+          <div class="timeline-org">Carnegie Mellon University Robotics Institute</div>
+          <ul class="timeline-bullets">
+            <li>Developed an AI-driven tracking and localization system to assist older adults in locating kitchen items.</li>
+            <li>Engineered an object detector leveraging Grounded SAM 2 and prompt engineering to identify 20+ kitchen items across diverse meal-preparation scenarios.</li>
+            <li>Designed a scalable registration pipeline using RGB-D depth sensors to enable zero-shot system deployment across varied kitchen environments.</li>
+            <li>Evaluated system performance on real-world video datasets of 8 older adult participants preparing meals.</li>
+            <li><strong>Recognition & Funding:</strong> Awarded the CMU Summer Undergraduate Research Fellowship (SURF 2025).</li>
+            <li><strong>Advisors:</strong> Prof. Reid Simmons, Prof. Zackory Erickson, and Prof. Pragathi Praveena.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-date">Jan 2025 — May 2026</div>
+        <div class="timeline-body">
+          <h4>Head Teaching Assistant, Concepts of AI Course (07-180)</h4>
+          <div class="timeline-org">Carnegie Mellon University School of Computer Science</div>
+          <ul class="timeline-bullets">
+            <li>Led a team of 7 Teaching Assistants overseeing course logistics, grading, and recitations for 100+ freshman CS students.</li>
+            <li>Directed curriculum delivery covering core AI domains, including generative AI, neural networks, reinforcement learning (RL), and AI ethics.</li>
+            <li>Authored original assignments, exams, and a custom 2048 RL agent competition to promote hands-on algorithm implementation.</li>
+            <li>Conducted weekly recitations and office hours, achieving a 5.0 / 5.0 TA evaluation rating from students.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-date">Jul 2021 — May 2022</div>
+        <div class="timeline-body">
+          <h4>Deep Learning Research Intern</h4>
+          <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
+          <ul class="timeline-bullets">
+            <li>Conceptualized and implemented a Transformer-based predictive model to forecast future high-infectivity COVID-19 viral variants.</li>
+            <li>Achieved 90% accuracy in protein-protein interaction prediction by incorporating Masked Language Modeling (MLM), Sharpness-Aware Minimization (SAM), and custom data augmentation techniques.</li>
+            <li><strong>Published as First Author:</strong> "Predicting More Infectious Virus Variants for Pandemic Prevention through Deep Learning" (CMLA 2022 & IJAIA 2022).</li>
+            <li><strong>Awards:</strong> Singapore Science and Engineering Fair (SSEF) 2022 Gold Award; Regeneron ISEF 2022 Finalist.</li>
+            <li><strong>Advisor:</strong> Dr. Bingquan Shen.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-date">May 2020 — Jun 2021</div>
+        <div class="timeline-body">
+          <h4>Machine Learning Research Intern</h4>
+          <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
+          <ul class="timeline-bullets">
+            <li>Architected a deep convolutional neural network for predicting colorectal cancer risks from stool images with 94% accuracy.</li>
+            <li>Addressed severe dataset scarcity by fine-tuning a DiffAugment StyleGAN2 pipeline to synthesize realistic, high-fidelity medical images.</li>
+            <li><strong>Published as First Author:</strong> "Stool Recognition for Colorectal Cancer Detection through Deep Learning" (IEEE ICMI 2025).</li>
+            <li><strong>Awards:</strong> SSEF 2021 Gold Award; Global Youth & Science Technology Bowl Hong Kong (GYSTB) Grand Prize (Bronze); Singapore University of Technology and Design Research & Innovation Award in Healthcare.</li>
+            <li><strong>Advisor:</strong> Dr. Bingquan Shen.</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="publications" class="reveal">
+  <div class="wrap">
+    <div class="section-label">Publications</div>
+
+    <div class="pub-year-group">
+      <h3 class="pub-year-heading">2025</h3>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">Vision and Tracking in a Smart AI Kitchen for Older Adults</h4>
+        <p class="pub-authors"><u>Glenda Tan</u>, Jessica Han, Ryan Ding, and Pranavi Kondapalli</p>
+        <p class="pub-venue">CMU Meeting of the Minds Undergraduate Research Symposium 2025, Pittsburgh USA, Apr 2025</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="awards">Awards <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <div class="pub-expand" data-panel="awards">
+          <p>Summer Undergraduate Research Fellowship 2025</p>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>Cognitive decline associated with aging can present a myriad of challenges to everyday functions, such as in locating items, which can hinder an individual's ability to prepare meals. In this work, we propose a system that uses an overhead RGB-D camera and zero-shot object detection models to identify and track items in 3D as they are being used in a kitchen. Our pipeline employs several strategies to achieve stable object tracking and object permanence even despite transient occlusions. We further ground the 3D coordinates of each tracked item using their semantic kitchen locations, which we define using a highly scalable registration procedure. We evaluate our system on a set of eight videos of older adults (median age = 78), captured in two different kitchens, and achieve reasonable performance in complex, ecologically valid scenes. Finally, we demonstrate how our pipeline can inform interaction with a user through CookerLooker, a mobile app that helps users easily locate items in their kitchen. To help catch when items are misplaced, the app includes a module that evaluates the appropriateness of item placements, information that could further inform assistive interactions with the user. In integrating our pipeline with CookerLooker, we attempt to address common challenges faced by older adults in the kitchen, empowering them to age independently.</p>
+        </div>
+      </div>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">Stool Recognition for Colorectal Cancer Detection through Deep Learning</h4>
+        <p class="pub-authors"><u>Glenda Tan</u>, Karin Goh, and Bingquan Shen</p>
+        <p class="pub-venue">IEEE 4th International Conference on Computing and Machine Intelligence, Michigan USA, Apr 2025</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="awards">Awards <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="pub-btn" href="https://arxiv.org/abs/2410.17288" target="_blank" rel="noopener">arXiv</a>
+          <a class="pub-btn" href="https://ieeexplore.ieee.org/document/11141177" target="_blank" rel="noopener">PDF</a>
+        </div>
+        <div class="pub-expand" data-panel="awards">
+          <ul>
+            <li>Gold Award, Singapore Science and Engineering Fair 2021</li>
+            <li>Singapore University of Technology and Design Research & Innovation Award: Healthcare</li>
+            <li>Grand Prize Bronze Award, Global Youth Science and Technology Bowl 2021 Hong Kong</li>
+            <li>Represented Singapore at Global Youth Science and Technology Bowl 2021 Hong Kong</li>
+          </ul>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>Colorectal cancer is the most common cancer in Singapore and the third most common cancer worldwide. Blood in a person's stool is a symptom of this disease, and it is usually detected by the faecal occult blood test (FOBT). However, the FOBT presents several limitations - the collection process for the stool samples is tedious and unpleasant, the waiting period for results is about 2 weeks and costs are involved. In this research, we propose a simple-to-use, fast and cost-free alternative - a stool recognition neural network that determines if there is blood in one's stool (which indicates a possible risk of colorectal cancer) from an image of it. As this is a new classification task, there was limited data available, hindering classifier performance. Hence, various Generative Adversarial Networks (GANs) (DiffAugment StyleGAN2, DCGAN, Conditional GAN) were trained to generate images of high fidelity to supplement the dataset. Subsequently, images generated by the GAN with the most realistic images (DiffAugment StyleGAN2) were concatenated to the classifier's training batch on-the-fly, improving accuracy to 94%. This model was then deployed to a mobile app - Poolice, where users can take a photo of their stool and obtain instantaneous results if there is blood in their stool, prompting those who do to seek medical advice. As "early detection saves lives", we hope our app built on our stool recognition neural network can help people detect colorectal cancer earlier, so they can seek treatment and have higher chances of survival.</p>
+        </div>
+      </div>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">AI vs Human Creativity: Investigating the Effectiveness of AI-Generated Advertisements</h4>
+        <p class="pub-authors">Calvin Chan and <u>Glenda Tan</u></p>
+        <p class="pub-venue">National Conference of Undergraduate Research, Pittsburgh USA, Apr 2025</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="awards">Awards <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="pub-btn" href="https://www.cur.org/wp-content/uploads/2025/06/NCUR-2025-Proceedings.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+        <div class="pub-expand" data-panel="awards">
+          <p>CMU Office of Undergraduate Research and Scholar Development Presentation Award 2025</p>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>With rapid advancements in artificial intelligence (AI), many companies have begun incorporating generative AI into their advertising strategies, producing unique and engaging commercials that transcend the limits of traditional advertising. Given the immense success of these campaigns, this research aims to investigate if AI-generated ads can outperform their human-made counterparts in increasing consumer demand, and if so, the factors contributing to their greater success. To answer these questions, we first conducted two case analyses on Nike's "Never Done Evolving" ft. Serena Williams campaign and Coca-Cola's "Y3000" campaign. Next, we devised a theoretical framework of three potential success factors for AI-generated ads (complexity, creativity, and familiarity). Finally, a week-long field study was conducted on 240 Carnegie Mellon University students across different years and majors to study the effectiveness of AI-generated ads in increasing club membership of campus organizations, with club membership serving as a proxy for consumer demand. In this study, participants were randomly partitioned into four groups, with each group surveyed on how likely they were to join a club after viewing one of four posters (three AI-generated posters based on each factor of success and one human-made poster). Through this study, we discovered that although AI-generated posters are generally more effective than human-made posters in capturing people's attention, their human-made counterparts are still more effective in increasing club membership. While AI-generated posters attract a larger audience, there is greater variation in the interest level of the audience. Future research can further explore the impact of AI advertisements on various aspects of marketing, such as click-thru rates and sales on different marketing platforms such as e-commerce.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <h3 class="pub-year-heading">2024</h3>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">The Role of Artificial Intelligence in Art Restoration</h4>
+        <p class="pub-authors"><u>Glenda Tan</u> and Chad Szalkowski-Ference</p>
+        <p class="pub-venue">WOVEN: An Interdisciplinary Journal of Dietrich College CMU, Issue 4, Spring 2024, Apr 2024</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="pub-btn" href="https://www.cmu.edu/dietrich/gened/woven/issues/four/docs/piece-3-glenda-min.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>Art restoration, the practice of returning a damaged artwork to its original condition, is challenging: each artwork requires a unique treatment and complex ethical boundaries may be crossed. However, this field can be transformed by today's artificial intelligence (AI) algorithms, which currently excel in artistic tasks. Hence, this research aims to elucidate the role of AI in art restoration, specifically in restoring damaged paintings. To achieve this, an AI image enhancer web application was tested on images of three damaged paintings, with its digital reconstructions benchmarked against the actual restorations using various technical and aesthetic metrics. Results show that AI currently plays the role of an assistant in the analysis stage of art restoration: while AI can propose feasible intervention methods and produce digital reconstructions to aid art restorers in restoration (accelerating, improving accuracy and lowering costs), it cannot guide them in navigating complex ethical boundaries. Art restorers are still responsible for striking the balance between improving an artwork's legibility and respecting the original creation. These findings showcase the potential of AI to the artistic and historical communities, spurring further research into developing more effective AI algorithms.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <h3 class="pub-year-heading">2023</h3>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">The fourth annual Carnegie Mellon Libraries hackathon for biomedical data management, knowledge graphs, and deep learning</h4>
+        <p class="pub-authors">Jedrzej Kubica, Rachit Kumar, <u>Glenda Tan</u>, Van Q. Truong, and David Enoma, Nicholas P. Cooley, Minhyek Jeon, Chiao-Feng Lin, Minh Tran, Amrita R. Choudhury, Xinrong Du, Shashank Katiyar, Andrew Lutsky, Rajarshi Mondal, Aniket Naik, Soham Shirolkar, Thomas Y. Tam, Amy Q. Zhou, Kristen Scott, Ben Busby</p>
+        <p class="pub-venue">BioHackrXiv, Nov 2023</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="pub-btn" href="https://osf.io/preprints/biohackrxiv/k4rh6_v1" target="_blank" rel="noopener">PDF</a>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>In October 2023, a group of 44 scientists hailing from several U.S. states, Canada, Poland, and Switzerland came together for a hybrid in-person and virtual hackathon. The event was jointly hosted by Carnegie Mellon University Libraries and DNAnexus, a California-based cloud computing and bioinformatics company. This collaborative effort revolved around the theme of "Data Management and Graph Extraction for Large Transformer Models in the Biomedical Space." In the spirit of fostering collaboration, participants organized themselves into five teams, which ultimately resulted in the successful completion of four hackathon projects. These projects encompassed a wide range of topics, from detecting features contributing to virus susceptibility to validating models using knowledge graphs. Repositories for the hackathon projects are available at github.com/collaborativebioinformatics. We hope that the insights and experiences shared by these teams, as detailed in the following manuscript, will prove valuable to the broader scientific community.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-year-group">
+      <h3 class="pub-year-heading">2022</h3>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">Anti-virus Autobots: Predicting More Infectious Virus Variants for Pandemic Prevention through Deep Learning</h4>
+        <p class="pub-authors"><u>Glenda Tan</u>, Tze Erhn Koay, and Bingquan Shen</p>
+        <p class="pub-venue">4th International Conference on Machine Learning and Applications, vol. 12, no. 11, Copenhagen Denmark, Jun 2022</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="awards">Awards <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="pub-btn" href="https://arxiv.org/abs/2205.14854" target="_blank" rel="noopener">arXiv</a>
+          <a class="pub-btn" href="https://csitcp.org/paper/12/1211csit02.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+        <div class="pub-expand" data-panel="awards">
+          <ul>
+            <li>Gold Award, Singapore Science and Engineering Fair 2022</li>
+            <li>Represented Singapore at Regeneron International Science and Engineering Fair 2022 Atlanta USA</li>
+          </ul>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>More infectious virus variants can arise from rapid mutations in their proteins, creating new infection waves. These variants can evade one's immune system and infect vaccinated individuals, lowering vaccine efficacy. Hence, to improve vaccine design, this project proposes Optimus PPIme - a deep learning approach to predict future, more infectious variants from an existing virus (exemplified by SARS-CoV-2). The approach comprises an algorithm which acts as a "virus" attacking a host cell. To increase infectivity, the "virus" mutates to bind better to the host's receptor. 2 algorithms were attempted - greedy search and beam search. The strength of this variant-host binding was then assessed by a transformer network we developed, with a high accuracy of 90%. With both components, beam search eventually proposed more infectious variants. Therefore, this approach can potentially enable researchers to develop vaccines that provide protection against future infectious variants before they emerge, pre-empting outbreaks and saving lives.</p>
+        </div>
+      </div>
+
+      <div class="pub-entry">
+        <h4 class="pub-title">Predicting More Infectious Virus Variants for Pandemic Prevention through Deep Learning</h4>
+        <p class="pub-authors"><u>Glenda Tan</u>, Tze Erhn Koay, and Bingquan Shen</p>
+        <p class="pub-venue">International Journal of Artificial Intelligence and Applications, vol. 13, no. 4, Jul 2022</p>
+        <div class="pub-actions">
+          <button class="pub-btn pub-toggle" type="button" data-panel="awards">Awards <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <button class="pub-btn pub-toggle" type="button" data-panel="abstract">Abstract <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="pub-btn" href="https://arxiv.org/abs/2205.14854" target="_blank" rel="noopener">arXiv</a>
+          <a class="pub-btn" href="https://aircconline.com/ijaia/V13N4/13422ijaia03.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+        <div class="pub-expand" data-panel="awards">
+          <ul>
+            <li>Gold Award, Singapore Science and Engineering Fair 2022</li>
+            <li>Represented Singapore at Regeneron International Science and Engineering Fair 2022 Atlanta USA</li>
+          </ul>
+        </div>
+        <div class="pub-expand" data-panel="abstract">
+          <p>More infectious virus variants can arise from rapid mutations in their proteins, creating new infection waves. These variants can evade one's immune system and infect vaccinated individuals, lowering vaccine efficacy. Hence, to improve vaccine design, this project proposes Optimus PPIme - a deep learning approach to predict future, more infectious variants from an existing virus (exemplified by SARS-CoV-2). The approach comprises an algorithm which acts as a "virus" attacking a host cell. To increase infectivity, the "virus" mutates to bind better to the host's receptor. 2 algorithms were attempted - greedy search and beam search. The strength of this variant-host binding was then assessed by a transformer network we developed, with a high accuracy of 90%. With both components, beam search eventually proposed more infectious variants. Therefore, this approach can potentially enable researchers to develop vaccines that provide protection against future infectious variants before they emerge, pre-empting outbreaks and saving lives.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <div class="wrap">
+    <div class="section-label">Projects</div>
+
+    <div class="projects-category">
+      <h3 class="projects-category-title">Technical Projects</h3>
+      <div class="project-grid">
+
+        <div class="project-card-v2" data-project="haikus2s">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>HaikuS2S: A Cascaded Speech-to-Speech System for Responding in Verse</h4>
+            <div class="project-dates">Apr 2026 – Present</div>
+            <p class="project-desc">The ancient Greeks often consulted the Oracle of Delphi for poetic wisdom. HaikuS2S brings that classic experience into the AI age, responding to your conveyed desires in a 5-7-5 syllable haiku!</p>
+            <button class="btn-learn-more" type="button" data-project="haikus2s">Learn more</button>
+          </div>
+        </div>
+
+        <div class="project-card-v2" data-project="bb8">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>Life-sized Functional BB-8 Droid</h4>
+            <div class="project-dates">Apr 2024 – Present</div>
+            <p class="project-desc">As the lead programmer of the CMU Robotics Club BB-8 Droid Project (a collaboration with CMU Star Wars Club), I'm leading 20 members in building a life-sized BB-8 droid and programming its Arduino circuits. We're on a roll!</p>
+            <button class="btn-learn-more" type="button" data-project="bb8">Learn more</button>
+          </div>
+        </div>
+
+        <div class="project-card-v2" data-project="hairdiffuser">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>Hair Diffuser: Personalized Hairstyle Simulation via Diffusion Models</h4>
+            <div class="project-dates">Nov 2025 – Dec 2025</div>
+            <p class="project-desc">Have you ever wanted to change your hairstyle but worried about how you would look? Introducing Hair Diffuser, a generative AI pipeline that simulates how you would look in your desired hairstyle...</p>
+            <button class="btn-learn-more" type="button" data-project="hairdiffuser">Learn more</button>
+          </div>
+        </div>
+
+        <div class="project-card-v2" data-project="greenhouse">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>Autonomous Greenhouse System</h4>
+            <div class="project-dates">Aug 2025 – Nov 2025</div>
+            <p class="project-desc">I programmed an autonomous greenhouse agent with three friends to grow radishes and lettuce without any human intervention for my Autonomous Agents Course Project!</p>
+            <button class="btn-learn-more" type="button" data-project="greenhouse">Learn more</button>
+          </div>
+        </div>
+
+        <div class="project-card-v2" data-project="aurebesh">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>Aurebesh Decoder: Star Wars Script Translation</h4>
+            <div class="project-dates">Apr 2025 – May 2025</div>
+            <p class="project-desc">I built Aurebesh Decoder with two friends to translate messages in the Star Wars language of Aurebesh to English as part of our Machine Learning Course Final Project!</p>
+            <button class="btn-learn-more" type="button" data-project="aurebesh">Learn more</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="projects-category">
+      <h3 class="projects-category-title">Leadership & Community</h3>
+      <div class="project-grid">
+
+        <div class="project-card-v2" data-project="starwarsclub">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>CMU Star Wars Club</h4>
+            <div class="project-dates">Dec 2023 – Present</div>
+            <p class="project-desc">I co-founded the CMU Star Wars Club with two friends in Fall 2023 to build a community of Star Wars fans across the CMU galaxy. Check out some activities that I've led as the 2024-2025 President!</p>
+            <button class="btn-learn-more" type="button" data-project="starwarsclub">Learn more</button>
+          </div>
+        </div>
+
+        <div class="project-card-v2" data-project="aiinaction">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>AI in Action Seminar Series</h4>
+            <div class="project-dates">Aug 2024 – May 2026</div>
+            <p class="project-desc">A CMU SCS seminar series that invites AI leaders to share their insights with the CMU community. Previous speakers include Nobel Laureate Prof. Geoffrey Hinton.</p>
+            <button class="btn-learn-more" type="button" data-project="aiinaction">Learn more</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="projects-category">
+      <h3 class="projects-category-title">Creative</h3>
+      <div class="project-grid">
+
+        <div class="project-card-v2" id="youtubeChannelCard" data-external-link="https://www.youtube.com/@theglendalorian">
+          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-card-body">
+            <h4>YouTube Channel</h4>
+            <div class="project-dates">May 2020 – Present</div>
+            <p class="project-desc">Check out my electric organ YouTube channel for movie/anime/video game soundtracks, pop songs, classics and more! I post new videos every month.</p>
+            <a class="btn-learn-more btn-learn-more-link" href="https://www.youtube.com/@theglendalorian" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="modal-overlay" id="projectModalOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalCloseBtn" type="button" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-tag" id="modalTag"></div>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-dates" id="modalDates"></p>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<section id="awards" class="reveal">
+  <div class="wrap">
+    <div class="section-label">Awards</div>
+    <ul class="awards-list">
+      <li class="award-card">
+        <div class="award-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>
+        </div>
+        <div class="award-body">
+          <h4>Senior Leadership Recognition Award</h4>
+          <p class="award-issuer">Carnegie Mellon University · Apr 2026</p>
+          <p class="award-assoc">Carnegie Mellon University School of Computer Science</p>
+          <p class="award-desc">Awarded in recognition of exceptional leadership, service, and contributions to the Carnegie Mellon University community.</p>
+        </div>
+      </li>
+      <li class="award-card">
+        <div class="award-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>
+        </div>
+        <div class="award-body">
+          <h4>Phi Beta Kappa</h4>
+          <p class="award-issuer">The Phi Beta Kappa Society: Carnegie Mellon University Chapter · Mar 2026</p>
+          <p class="award-assoc">Carnegie Mellon University School of Computer Science</p>
+          <p class="award-desc">Inducted into the nation's oldest academic honor society, celebrating academic excellence in the liberal arts and sciences.</p>
+        </div>
+      </li>
+      <li class="award-card">
+        <div class="award-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>
+        </div>
+        <div class="award-body">
+          <h4>Andrew Carnegie Society (ACS) Scholar</h4>
+          <p class="award-issuer">Carnegie Mellon University Andrew Carnegie Society · Sep 2025</p>
+          <p class="award-desc">Selected by university deans and department heads as one of the top 2% of graduating seniors based on academic excellence, leadership, and service.</p>
+        </div>
+      </li>
+      <li class="award-card">
+        <div class="award-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>
+        </div>
+        <div class="award-body">
+          <h4>Singapore Chemistry Olympiad: Gold Medalist</h4>
+          <p class="award-issuer">National University of Singapore Department of Chemistry · Dec 2021</p>
+          <p class="award-desc">Recognized as 1 of only 2 female gold medalists nationwide; selected for intensive training for the International Chemistry Olympiad (IChO).</p>
+        </div>
+      </li>
+      <li class="award-card">
+        <div class="award-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>
+        </div>
+        <div class="award-body">
+          <h4>RoboCup Asia-Pacific, Aichi Japan: 1st Place, Rescue Line</h4>
+          <p class="award-issuer">RoboCup Asia-Pacific Confederation · Nov 2021</p>
+          <p class="award-desc">Placed 1st internationally in dynamic autonomous line-following and obstacle navigation robotics competition.</p>
+        </div>
+      </li>
+      <li class="award-card">
+        <div class="award-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>
+        </div>
+        <div class="award-body">
+          <h4>Agency for Science, Technology and Research Science Award</h4>
+          <p class="award-issuer">Agency for Science, Technology and Research Singapore · Jul 2021</p>
+          <p class="award-desc">Awarded to top-performing students demonstrating exceptional aptitude and achievement in science, technology, engineering, and mathematics (STEM).</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="wrap">
+    <div class="section-label">Skills</div>
+    <div class="skills-groups">
+      <div class="skill-category">
+        <h3 class="skill-category-title">Core Research Areas</h3>
+        <div class="skill-group">
+          <h4>Generative & Language Models</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">Large Language Models (LLMs)</span>
+            <span class="skill-chip">Diffusion Models</span>
+            <span class="skill-chip">Generative Adversarial Networks (GANs)</span>
+            <span class="skill-chip">Transformer Models</span>
+            <span class="skill-chip">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Speech & Audio Processing</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">Speech Technology</span>
+            <span class="skill-chip">Speech Recognition (ASR)</span>
+            <span class="skill-chip">Text-to-Speech (TTS)</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Vision & Multimodal Systems</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">Computer Vision</span>
+            <span class="skill-chip">Vision-Language Models (VLMs)</span>
+            <span class="skill-chip">Convolutional Neural Networks (CNNs)</span>
+            <span class="skill-chip">OpenCV</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-category-title">Frameworks, Tools & Languages</h3>
+        <div class="skill-group">
+          <h4>Deep Learning & Agents</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">PyTorch</span>
+            <span class="skill-chip">Hugging Face</span>
+            <span class="skill-chip">TensorFlow</span>
+            <span class="skill-chip">Keras</span>
+            <span class="skill-chip">LangChain</span>
+            <span class="skill-chip">LangGraph</span>
+            <span class="skill-chip">CrewAI</span>
+            <span class="skill-chip">AG2</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Data Science & ML Libraries</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">NumPy</span>
+            <span class="skill-chip">Pandas</span>
+            <span class="skill-chip">Scikit-Learn</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Programming Languages</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">C</span>
+            <span class="skill-chip">C++</span>
+            <span class="skill-chip">C#</span>
+            <span class="skill-chip">Java</span>
+            <span class="skill-chip">JavaScript</span>
+            <span class="skill-chip">SML</span>
+            <span class="skill-chip">HTML/CSS</span>
+            <span class="skill-chip">Swift</span>
+            <span class="skill-chip">R</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-category-title">Academic & Professional Service</h3>
+        <div class="skill-group">
+          <h4>Research & Writing</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">Academic Writing</span>
+            <span class="skill-chip">Grant/Paper Writing</span>
+            <span class="skill-chip">Literature Review</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Academic Service</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">Conference Reviewing</span>
+            <span class="skill-chip">Teaching/Mentoring</span>
+            <span class="skill-chip">Community Outreach</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="skill-chips">
+            <span class="skill-chip">English</span>
+            <span class="skill-chip">Chinese</span>
+            <span class="skill-chip">Spanish</span>
+            <span class="skill-chip">Japanese</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="contact-inner">
+      <h2>Let's talk!</h2>
+      <p>Open to conversations about assistive ML, caregiving technology, or collaboration.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:glendat@andrew.cmu.edu">Email me</a>
+        <a class="btn btn-secondary" href="#">CV</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/glenda-h-tan">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://orcid.org/0009-0008-5892-9302">ORCID</a>
+        <a class="btn btn-ghost" href="https://github.com/the-glendalorian">GitHub</a>
+        <a class="btn btn-ghost" href="https://youtube.com/@theglendalorian">YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-divider"><hr></div>
+  <div class="wrap">
+    Glenda H. Tan · Carnegie Mellon University
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var navLinksEl = document.getElementById('navLinks');
+  var iconOpen = document.getElementById('navToggleIconOpen');
+  var iconClose = document.getElementById('navToggleIconClose');
+
+  function closeMobileNav(){
+    if (!navLinksEl) return;
+    navLinksEl.classList.remove('open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    if (iconOpen) iconOpen.style.display = '';
+    if (iconClose) iconClose.style.display = 'none';
+  }
+
+  if (navToggle && navLinksEl){
+    navToggle.addEventListener('click', function(){
+      var isOpen = navLinksEl.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (iconOpen) iconOpen.style.display = isOpen ? 'none' : '';
+      if (iconClose) iconClose.style.display = isOpen ? '' : 'none';
+    });
+  }
+
+  // Nav links: smooth-scroll to section and close mobile menu after selecting
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var targetId = link.getAttribute('href');
+      var targetEl = targetId ? document.querySelector(targetId) : null;
+      if (targetEl){
+        e.preventDefault();
+        closeMobileNav();
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        closeMobileNav();
+      }
+    });
+  });
+
+  var sections = navLinks.map(function(link){
+    return document.querySelector(link.getAttribute('href'));
+  }).filter(Boolean);
+
+  if ('IntersectionObserver' in window && sections.length){
+    var spyObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          var id = '#' + entry.target.id;
+          navLinks.forEach(function(link){
+            link.classList.toggle('active', link.getAttribute('href') === id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ spyObserver.observe(s); });
+  }
+
+  // Scroll reveal for sections
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length){
+    var revealObserver = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el){ revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // Project modal data
+  var projectData = {
+    haikus2s: {
+      tag: 'Technical Project',
+      title: 'HaikuS2S: A Cascaded Speech-to-Speech System for Responding in Verse',
+      dates: 'Apr 2026 – Present',
+      body: '' +
+        '<p>For my Speech Technologies for Conversational AI Final Project, I built a cascaded speech system integrating OWSM v4 (ASR), Microsoft Phi-3-mini-4k-instruct (LLM), and a VITS model fine-tuned on haiku verse (TTS) together with three classmates. This project is advised by Prof. Shinji Watanabe, director of the CMU WAVLab.</p>' +
+        '<p>First, I curated a dataset of 1,000 haikus using Gemini prompt engineering and recorded 250 custom haiku audio samples to fine-tune VITS for poetic prosody.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p>Next, I fine-tuned the VITS model on our haiku dataset and benchmarked it against the pre-trained baseline using the WER, CER, NISQA, emotional similarity, and chroma alignment metrics in the VERSA library.</p>' +
+        '<p>Our group conducted an IRB-approved user study with 30 participants to evaluate conversational experience. The participants generally preferred interacting with the fine-tuned haiku prosody VITS model!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p>Finally, I created some demos for our HaikuS2S system and implemented a Grapheme-to-Phoneme (G2P) validation pipeline to programmatically enforce strict 5-7-5 syllable constraints on the LLM outputs. Here is a <a href="https://drive.google.com/file/d/1VxPBKcgtZANzsD9TvHMxE-w4EvqwfGVF/view?usp=sharing" target="_blank" rel="noopener">video</a> showcasing our system responding to a question about everyday life with a poetic twist!</p>' +
+        '<p>We have submitted our work to IEEE Spoken Language Technology (SLT) Conference 2026 and are awaiting the results.</p>'
+    },
+    bb8: {
+      tag: 'Technical Project',
+      title: 'Life-sized Functional BB-8 Droid',
+      dates: 'Apr 2024 – Present',
+      body: '' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Designing BB-8 on CAD.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Assembling BB-8’s skeleton and circuits!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Our movement functions and first test roll!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">We 3D-printed and assembled our own sphere for increased durability and realism as the previous acrylic sphere had cracked under pressure.</p>' +
+        '<p>Our goal for the next academic year is to assemble BB-8’s head!</p>'
+    },
+    hairdiffuser: {
+      tag: 'Technical Project',
+      title: 'Hair Diffuser: Personalized Hairstyle Simulation via Diffusion Models',
+      dates: 'Nov 2025 – Dec 2025',
+      body: '' +
+        '<p>I built Hair Diffuser together with two friends for our Generative AI Course Final Project. Check out how we developed this generative AI pipeline!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Hair Diffuser Pipeline: We fine-tuned a Stable Diffusion Inpainting model with DreamBooth LoRA on our dataset.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Compiling and annotating our custom hair dataset of 927 images in 40 hairstyles.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Experiment 1: We varied the number of training images per category. Models trained on 2 images per category generated images of the highest quality.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Experiment 2: We varied the degree of mask inflation. Highly inflated masks resulted in the lushest hair.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Experiment 3: We fine-tuned models with a fixed DreamBooth identifier vs a unique identifier for each hairstyle in the text prompt. Unique identifiers worsened performance, weakening prompt adherance and increasing image corruption.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">We obtained impressive and realistic results on a selfie of our teammate!</p>'
+    },
+    greenhouse: {
+      tag: 'Technical Project',
+      title: 'Autonomous Greenhouse System',
+      dates: 'Aug 2025 – Nov 2025',
+      body: '' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Our autonomous greenhouse consists of various sensors (light, temperature, humidity, moisture, camera) and actuators (fans, water pump, LEDs).</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">I programmed a light monitor that adjusts the LED brightness based on current sensor readings for the agent to reach its daily insolation target. Here are some tests on the simulator.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Our autonomous greenhouse sends us daily emails summarizing our plants\' growth, sensor logs and executed behaviors.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">I fine-tuned a ResNet-50 model to classify foliage with 96% accuracy. The model\'s predictions would be attached in our daily emails for us to monitor our plants\' growth.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Temperature and light logs that are also attached in our daily emails for us to monitor our greenhouse conditions.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Day 7: Our seeds have germinated!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Day 12: The seedlings are growing bigger and stronger!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Day 16: More leaves have sprouted!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Day 21: Big, leafy greens waiting to be harvested!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Harvest Day! We were really satisfied with our yield.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">We cooked our harvested veggies for dinner. Tasty!</p>'
+    },
+    aurebesh: {
+      tag: 'Technical Project',
+      title: 'Aurebesh Decoder: Star Wars Script Translation',
+      dates: 'Apr 2025 – May 2025',
+      body: '' +
+        '<p>A long time ago, in a galaxy far, far away, citizens of the Galactic Republic used the ancient alphabet of Aurebesh to write in Galactic Basic, aka English. Our ML pipeline takes in an Aurebesh message e.g. a scene from a Star Wars movie, classifies each letter, and outputs its English translation.</p>' +
+        '<p>We fine-tuned a ResNet-50 and Vision Transformer on our custom Aurebesh dataset with image augmentations, which achieved 94% and 96% classification accuracy respectively on our fixed test set.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Compiling our custom Aurebesh dataset of 520 images in 26 letters.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">We experimented with data augmentation techniques (rotations and blurs) to overcome the insufficient training data. The Vision Transformer trained with both rotations and blurs achieved the highest classification accuracy of 96%.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Results for Message 1: JOIN THE FORCE OR WE LL FORCE YOU TO JOIN (CMU Star Wars Club Slogan)</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Results for Message 2: THE QUICK JAWAS HAVE IMMOBILIZED PAT IN A FAR GALAXY (Has all letters of the English alphabet)</p>'
+    },
+    starwarsclub: {
+      tag: 'Leadership & Community',
+      title: 'CMU Star Wars Club',
+      dates: 'Dec 2023 – Present',
+      body: '' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption"><a href="https://tartanconnect.cmu.edu/starwars/home/" target="_blank" rel="noopener">CMU Star Wars Club</a></p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">The Jedi Council @ The Fair. We\'ve recruited 335 members since Fall 2023!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Weekly Lightsaber Training: I developed the training curriculum and coach members in the 7 forms of lightsaber combat.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Lightsaber Performance @ CMU SCS Day 2025: I choreographed our lightsaber routine and led fellow performers in weekly rehearsals. Here’s our <a href="https://drive.google.com/file/d/1PGTNyZywbke1oyIqo_gaLvApfHqPkHn5/view?usp=sharing" target="_blank" rel="noopener">performance video</a>!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Weekly BB8 Droid Building @ TechSpark: I coach members in robotics (Arduino, Raspberry Pi) and lead the programming division.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Cosplay @ ScottyCon 2025.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Baking Yodalicious galactic treats!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Volunteering at Rise Against Hunger.</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Board Game Night!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption">Paint-the-Fence on May the 4th: I led members in claiming and painting the Fence. We braved the storms and persevered till the next morning.</p>'
+    },
+    aiinaction: {
+      tag: 'Leadership & Community',
+      title: 'AI in Action Seminar Series',
+      dates: 'Aug 2024 – May 2026',
+      body: '' +
+        '<p>As a member of the <a href="https://www.cs.cmu.edu/~ai-in-action/" target="_blank" rel="noopener">AI in Action</a> Organizing Team, I’m currently working on an original video series interviewing CMU professors about their research and views on AI’s future in society. The videos have been published on the <a href="https://www.youtube.com/watch?v=-MdLM3SjBzA&list=PLttXoftVKwlCbfkJ7MfA0LXC8eh2YFdHN" target="_blank" rel="noopener">CMU School of Computer Science YouTube Channel</a>!</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=aMYlSfOuvYY" target="_blank" rel="noopener">Prof. Reid Simmons</a>, Robotics Institute</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=B1cu7T7IlsM" target="_blank" rel="noopener">Prof. Ding Zhao</a>, Robotics Institute</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=-MdLM3SjBzA" target="_blank" rel="noopener">Prof. Zico Kolter</a>, Machine Learning Department</p>' +
+        '<div class="modal-figure">Add image</div>' +
+        '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=ja_fJyylNHI" target="_blank" rel="noopener">Prof. Graham Neubig</a>, Language Technologies Institute</p>'
+    }
+  };
+
+  // Project modal open/close logic
+  var modalOverlay = document.getElementById('projectModalOverlay');
+  var modalBox = modalOverlay ? modalOverlay.querySelector('.modal-box') : null;
+  var modalTag = document.getElementById('modalTag');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalDates = document.getElementById('modalDates');
+  var modalBody = document.getElementById('modalBody');
+  var modalCloseBtn = document.getElementById('modalCloseBtn');
+
+  function openProjectModal(id){
+    var data = projectData[id];
+    if (!data || !modalOverlay) return;
+    modalTag.textContent = data.tag;
+    modalTitle.textContent = data.title;
+    modalDates.textContent = data.dates;
+    modalBody.innerHTML = data.body;
+    modalOverlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    modalBox.scrollTop = 0;
+  }
+
+  function closeProjectModal(){
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.project-card-v2[data-project]').forEach(function(card){
+    card.addEventListener('click', function(){
+      openProjectModal(card.getAttribute('data-project'));
+    });
+  });
+
+  document.querySelectorAll('.project-card-v2[data-external-link]').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if (e.target.closest('a')) return;
+      var url = card.getAttribute('data-external-link');
+      if (url) window.open(url, '_blank', 'noopener');
+    });
+  });
+
+  if (modalCloseBtn){
+    modalCloseBtn.addEventListener('click', closeProjectModal);
+  }
+  if (modalOverlay){
+    modalOverlay.addEventListener('click', function(e){
+      if (e.target === modalOverlay){
+        closeProjectModal();
+      }
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      closeProjectModal();
+    }
+  });
+
+  // Publication Awards/Abstract toggles
+  document.querySelectorAll('.pub-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var entry = btn.closest('.pub-entry');
+      var panel = entry.querySelector('.pub-expand[data-panel="' + btn.getAttribute('data-panel') + '"]');
+      if (!panel) return;
+      var isOpen = panel.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+    });
+  });
+})();
+</script>
+</body>
+</html>
