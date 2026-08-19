@@ -343,9 +343,13 @@
     justify-content:center;
     color:var(--heart-deep);
     border-bottom:1px solid var(--line);
-    opacity:0.75;
-    text-align:center;
-    padding:12px;
+    overflow:hidden;
+  }
+  .project-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
   }
   .thumb-label{
     font-size:0.82rem;
@@ -496,16 +500,10 @@
     aspect-ratio:16/10;
     background:var(--blush-soft);
     border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--heart-deep);
-    opacity:0.75;
+    display:block;
+    width:100%;
+    object-fit:cover;
     margin:22px 0 8px;
-    font-size:0.82rem;
-    font-weight:600;
-    text-align:center;
-    padding:12px;
   }
   .modal-figure-caption{
     font-size:0.85rem;
@@ -1149,7 +1147,7 @@
       </div>
       <div class="hero-photo">
         <div class="photo-frame">
-          <span class="photo-frame-label">Add your photo</span>
+          <img src="images/image-1.png" alt="Glenda H. Tan">
         </div>
       </div>
     </div>
@@ -1423,7 +1421,7 @@
       <div class="project-grid">
 
         <div class="project-card-v2" data-project="haikus2s">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-2.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>HaikuS2S: A Cascaded Speech-to-Speech System for Responding in Verse</h4>
             <div class="project-dates">Apr 2026 – Present</div>
@@ -1433,7 +1431,7 @@
         </div>
 
         <div class="project-card-v2" data-project="bb8">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-3.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>Life-sized Functional BB-8 Droid</h4>
             <div class="project-dates">Apr 2024 – Present</div>
@@ -1443,7 +1441,7 @@
         </div>
 
         <div class="project-card-v2" data-project="hairdiffuser">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-4.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>Hair Diffuser: Personalized Hairstyle Simulation via Diffusion Models</h4>
             <div class="project-dates">Nov 2025 – Dec 2025</div>
@@ -1453,7 +1451,7 @@
         </div>
 
         <div class="project-card-v2" data-project="greenhouse">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-5.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>Autonomous Greenhouse System</h4>
             <div class="project-dates">Aug 2025 – Nov 2025</div>
@@ -1463,7 +1461,7 @@
         </div>
 
         <div class="project-card-v2" data-project="aurebesh">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-6.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>Aurebesh Decoder: Star Wars Script Translation</h4>
             <div class="project-dates">Apr 2025 – May 2025</div>
@@ -1480,7 +1478,7 @@
       <div class="project-grid">
 
         <div class="project-card-v2" data-project="starwarsclub">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-7.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>CMU Star Wars Club</h4>
             <div class="project-dates">Dec 2023 – Present</div>
@@ -1490,7 +1488,7 @@
         </div>
 
         <div class="project-card-v2" data-project="aiinaction">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-8.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>AI in Action Seminar Series</h4>
             <div class="project-dates">Aug 2024 – May 2026</div>
@@ -1507,7 +1505,7 @@
       <div class="project-grid">
 
         <div class="project-card-v2" id="youtubeChannelCard" data-external-link="https://www.youtube.com/@theglendalorian">
-          <div class="project-thumb"><span class="thumb-label">Add project image</span></div>
+          <div class="project-thumb"><img src="images/image-9.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>YouTube Channel</h4>
             <div class="project-dates">May 2020 – Present</div>
@@ -1817,10 +1815,10 @@
       body: '' +
         '<p>For my Speech Technologies for Conversational AI Final Project, I built a cascaded speech system integrating OWSM v4 (ASR), Microsoft Phi-3-mini-4k-instruct (LLM), and a VITS model fine-tuned on haiku verse (TTS) together with three classmates. This project is advised by Prof. Shinji Watanabe, director of the CMU WAVLab.</p>' +
         '<p>First, I curated a dataset of 1,000 haikus using Gemini prompt engineering and recorded 250 custom haiku audio samples to fine-tune VITS for poetic prosody.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-10.png" alt="Project photo">' +
         '<p>Next, I fine-tuned the VITS model on our haiku dataset and benchmarked it against the pre-trained baseline using the WER, CER, NISQA, emotional similarity, and chroma alignment metrics in the VERSA library.</p>' +
         '<p>Our group conducted an IRB-approved user study with 30 participants to evaluate conversational experience. The participants generally preferred interacting with the fine-tuned haiku prosody VITS model!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-11.png" alt="Project photo">' +
         '<p>Finally, I created some demos for our HaikuS2S system and implemented a Grapheme-to-Phoneme (G2P) validation pipeline to programmatically enforce strict 5-7-5 syllable constraints on the LLM outputs. Here is a <a href="https://drive.google.com/file/d/1VxPBKcgtZANzsD9TvHMxE-w4EvqwfGVF/view?usp=sharing" target="_blank" rel="noopener">video</a> showcasing our system responding to a question about everyday life with a poetic twist!</p>' +
         '<p>We have submitted our work to IEEE Spoken Language Technology (SLT) Conference 2026 and are awaiting the results.</p>'
     },
@@ -1829,13 +1827,13 @@
       title: 'Life-sized Functional BB-8 Droid',
       dates: 'Apr 2024 – Present',
       body: '' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-12.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Designing BB-8 on CAD.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-13.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Assembling BB-8’s skeleton and circuits!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-14.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Our movement functions and first test roll!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-15.png" alt="Project photo">' +
         '<p class="modal-figure-caption">We 3D-printed and assembled our own sphere for increased durability and realism as the previous acrylic sphere had cracked under pressure.</p>' +
         '<p>Our goal for the next academic year is to assemble BB-8’s head!</p>'
     },
@@ -1845,17 +1843,17 @@
       dates: 'Nov 2025 – Dec 2025',
       body: '' +
         '<p>I built Hair Diffuser together with two friends for our Generative AI Course Final Project. Check out how we developed this generative AI pipeline!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-16.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Hair Diffuser Pipeline: We fine-tuned a Stable Diffusion Inpainting model with DreamBooth LoRA on our dataset.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-17.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Compiling and annotating our custom hair dataset of 927 images in 40 hairstyles.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-18.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Experiment 1: We varied the number of training images per category. Models trained on 2 images per category generated images of the highest quality.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-19.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Experiment 2: We varied the degree of mask inflation. Highly inflated masks resulted in the lushest hair.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-20.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Experiment 3: We fine-tuned models with a fixed DreamBooth identifier vs a unique identifier for each hairstyle in the text prompt. Unique identifiers worsened performance, weakening prompt adherance and increasing image corruption.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-21.png" alt="Project photo">' +
         '<p class="modal-figure-caption">We obtained impressive and realistic results on a selfie of our teammate!</p>'
     },
     greenhouse: {
@@ -1863,27 +1861,27 @@
       title: 'Autonomous Greenhouse System',
       dates: 'Aug 2025 – Nov 2025',
       body: '' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-22.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Our autonomous greenhouse consists of various sensors (light, temperature, humidity, moisture, camera) and actuators (fans, water pump, LEDs).</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-23.png" alt="Project photo">' +
         '<p class="modal-figure-caption">I programmed a light monitor that adjusts the LED brightness based on current sensor readings for the agent to reach its daily insolation target. Here are some tests on the simulator.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-24.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Our autonomous greenhouse sends us daily emails summarizing our plants\' growth, sensor logs and executed behaviors.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-25.png" alt="Project photo">' +
         '<p class="modal-figure-caption">I fine-tuned a ResNet-50 model to classify foliage with 96% accuracy. The model\'s predictions would be attached in our daily emails for us to monitor our plants\' growth.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-26.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Temperature and light logs that are also attached in our daily emails for us to monitor our greenhouse conditions.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-27.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Day 7: Our seeds have germinated!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-28.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Day 12: The seedlings are growing bigger and stronger!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-29.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Day 16: More leaves have sprouted!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-30.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Day 21: Big, leafy greens waiting to be harvested!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-31.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Harvest Day! We were really satisfied with our yield.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-32.png" alt="Project photo">' +
         '<p class="modal-figure-caption">We cooked our harvested veggies for dinner. Tasty!</p>'
     },
     aurebesh: {
@@ -1893,13 +1891,13 @@
       body: '' +
         '<p>A long time ago, in a galaxy far, far away, citizens of the Galactic Republic used the ancient alphabet of Aurebesh to write in Galactic Basic, aka English. Our ML pipeline takes in an Aurebesh message e.g. a scene from a Star Wars movie, classifies each letter, and outputs its English translation.</p>' +
         '<p>We fine-tuned a ResNet-50 and Vision Transformer on our custom Aurebesh dataset with image augmentations, which achieved 94% and 96% classification accuracy respectively on our fixed test set.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-33.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Compiling our custom Aurebesh dataset of 520 images in 26 letters.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-34.png" alt="Project photo">' +
         '<p class="modal-figure-caption">We experimented with data augmentation techniques (rotations and blurs) to overcome the insufficient training data. The Vision Transformer trained with both rotations and blurs achieved the highest classification accuracy of 96%.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-35.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Results for Message 1: JOIN THE FORCE OR WE LL FORCE YOU TO JOIN (CMU Star Wars Club Slogan)</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-36.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Results for Message 2: THE QUICK JAWAS HAVE IMMOBILIZED PAT IN A FAR GALAXY (Has all letters of the English alphabet)</p>'
     },
     starwarsclub: {
@@ -1907,27 +1905,27 @@
       title: 'CMU Star Wars Club',
       dates: 'Dec 2023 – Present',
       body: '' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-37.png" alt="Project photo">' +
         '<p class="modal-figure-caption"><a href="https://tartanconnect.cmu.edu/starwars/home/" target="_blank" rel="noopener">CMU Star Wars Club</a></p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-38.png" alt="Project photo">' +
         '<p class="modal-figure-caption">The Jedi Council @ The Fair. We\'ve recruited 335 members since Fall 2023!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-39.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Weekly Lightsaber Training: I developed the training curriculum and coach members in the 7 forms of lightsaber combat.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-40.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Lightsaber Performance @ CMU SCS Day 2025: I choreographed our lightsaber routine and led fellow performers in weekly rehearsals. Here’s our <a href="https://drive.google.com/file/d/1PGTNyZywbke1oyIqo_gaLvApfHqPkHn5/view?usp=sharing" target="_blank" rel="noopener">performance video</a>!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-41.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Weekly BB8 Droid Building @ TechSpark: I coach members in robotics (Arduino, Raspberry Pi) and lead the programming division.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-42.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Cosplay @ ScottyCon 2025.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-43.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Baking Yodalicious galactic treats!</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-44.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Volunteering at Rise Against Hunger.</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-45.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Board Game Night!</p>' +
-        '<div class="modal-figure">Add image</div>' +
-        '<div class="modal-figure">Add image</div>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-46.png" alt="Project photo">' +
+        '<img class="modal-figure" src="images/image-47.png" alt="Project photo">' +
+        '<img class="modal-figure" src="images/image-48.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Paint-the-Fence on May the 4th: I led members in claiming and painting the Fence. We braved the storms and persevered till the next morning.</p>'
     },
     aiinaction: {
@@ -1936,14 +1934,14 @@
       dates: 'Aug 2024 – May 2026',
       body: '' +
         '<p>As a member of the <a href="https://www.cs.cmu.edu/~ai-in-action/" target="_blank" rel="noopener">AI in Action</a> Organizing Team, I’m currently working on an original video series interviewing CMU professors about their research and views on AI’s future in society. The videos have been published on the <a href="https://www.youtube.com/watch?v=-MdLM3SjBzA&list=PLttXoftVKwlCbfkJ7MfA0LXC8eh2YFdHN" target="_blank" rel="noopener">CMU School of Computer Science YouTube Channel</a>!</p>' +
-        '<div class="modal-figure">Add image</div>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-49.png" alt="Project photo">' +
+        '<img class="modal-figure" src="images/image-50.png" alt="Project photo">' +
         '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=aMYlSfOuvYY" target="_blank" rel="noopener">Prof. Reid Simmons</a>, Robotics Institute</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-51.png" alt="Project photo">' +
         '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=B1cu7T7IlsM" target="_blank" rel="noopener">Prof. Ding Zhao</a>, Robotics Institute</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-52.png" alt="Project photo">' +
         '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=-MdLM3SjBzA" target="_blank" rel="noopener">Prof. Zico Kolter</a>, Machine Learning Department</p>' +
-        '<div class="modal-figure">Add image</div>' +
+        '<img class="modal-figure" src="images/image-53.png" alt="Project photo">' +
         '<p class="modal-figure-caption"><a href="https://www.youtube.com/watch?v=ja_fJyylNHI" target="_blank" rel="noopener">Prof. Graham Neubig</a>, Language Technologies Institute</p>'
     }
   };
