@@ -255,9 +255,15 @@
     border-bottom:1px solid var(--line);
   }
   .timeline-item:last-child{border-bottom:none; padding-bottom:8px;}
-  .timeline-date{
+  .timeline-date-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
     min-width:150px;
     flex-shrink:0;
+  }
+  .timeline-date{
     font-size:0.8rem;
     font-weight:700;
     color:var(--heart-deep);
@@ -266,6 +272,15 @@
     padding:6px 14px;
     height:fit-content;
     text-align:center;
+  }
+  .timeline-logo{
+    width:36px;
+    height:36px;
+    border-radius:8px;
+    object-fit:contain;
+    background:var(--white);
+    border:1px solid var(--line);
+    flex-shrink:0;
   }
   .timeline-body h4{
     margin:0 0 4px;
@@ -1094,7 +1109,12 @@
       gap:16px;
       padding:26px 0;
     }
-    .timeline-date{margin-bottom:0;}
+    .timeline-date-col{
+      flex-direction:row;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
 
     .modal-box{padding:24px; max-height:88vh;}
     .modal-gallery{grid-template-columns:1fr;}
@@ -1213,7 +1233,10 @@
     <div class="section-label">Experience</div>
     <ul class="timeline">
       <li class="timeline-item">
-        <div class="timeline-date">May 2024 — Present</div>
+        <div class="timeline-date-col">
+          <div class="timeline-date">May 2024 — Present</div>
+          <img class="timeline-logo" src="images/image-63.png" alt="Carnegie Mellon University Robotics Institute logo">
+        </div>
         <div class="timeline-body">
           <h4>Research Assistant</h4>
           <div class="timeline-org">Carnegie Mellon University Robotics Institute</div>
@@ -1228,7 +1251,10 @@
         </div>
       </li>
       <li class="timeline-item">
-        <div class="timeline-date">Jan 2025 — May 2026</div>
+        <div class="timeline-date-col">
+          <div class="timeline-date">Jan 2025 — May 2026</div>
+          <img class="timeline-logo" src="images/image-64.png" alt="Carnegie Mellon University School of Computer Science logo">
+        </div>
         <div class="timeline-body">
           <h4>Head Teaching Assistant, Concepts of AI Course (07-180)</h4>
           <div class="timeline-org">Carnegie Mellon University School of Computer Science</div>
@@ -1241,7 +1267,10 @@
         </div>
       </li>
       <li class="timeline-item">
-        <div class="timeline-date">Jul 2021 — May 2022</div>
+        <div class="timeline-date-col">
+          <div class="timeline-date">Jul 2021 — May 2022</div>
+          <img class="timeline-logo" src="images/image-65.png" alt="Defense Science Organization National Laboratories Singapore logo">
+        </div>
         <div class="timeline-body">
           <h4>Deep Learning Research Intern</h4>
           <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
@@ -1255,7 +1284,10 @@
         </div>
       </li>
       <li class="timeline-item">
-        <div class="timeline-date">May 2020 — Jun 2021</div>
+        <div class="timeline-date-col">
+          <div class="timeline-date">May 2020 — Jun 2021</div>
+          <img class="timeline-logo" src="images/image-65.png" alt="Defense Science Organization National Laboratories Singapore logo">
+        </div>
         <div class="timeline-body">
           <h4>Machine Learning Research Intern</h4>
           <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
@@ -1441,7 +1473,7 @@
           <div class="project-thumb"><img src="images/image-3.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>Life-sized Functional BB-8 Droid</h4>
-            <div class="project-dates">Aug 2024 – Present</div>
+            <div class="project-dates">Apr 2024 – Present</div>
             <p class="project-desc">As the lead programmer of the CMU Robotics Club BB-8 Droid Project (a collaboration with CMU Star Wars Club), I'm leading 20 members in building a life-sized BB-8 droid and programming its Arduino circuits. We're on a roll!</p>
             <button class="btn-learn-more" type="button" data-project="bb8">Learn more</button>
           </div>
@@ -1461,7 +1493,7 @@
           <div class="project-thumb"><img src="images/image-5.png" alt="Project image"></div>
           <div class="project-card-body">
             <h4>Autonomous Greenhouse System</h4>
-            <div class="project-dates">Aug 2025 – Dec 2025</div>
+            <div class="project-dates">Aug 2025 – Nov 2025</div>
             <p class="project-desc">I programmed an autonomous greenhouse agent with three friends to grow radishes and lettuce without any human intervention for my Autonomous Agents Course Project!</p>
             <button class="btn-learn-more" type="button" data-project="greenhouse">Learn more</button>
           </div>
@@ -1579,7 +1611,7 @@
         </div>
         <div class="award-body">
           <h4>Singapore Chemistry Olympiad: Gold Medalist</h4>
-          <p class="award-issuer">Singapore National Institute of Chemistry · Dec 2021</p>
+          <p class="award-issuer">National University of Singapore Department of Chemistry · Dec 2021</p>
           <p class="award-desc">Recognized as 1 of only 2 female gold medalists nationwide; selected for intensive training for the International Chemistry Olympiad (IChO).</p>
         </div>
       </li>
@@ -1858,7 +1890,7 @@
         '<p class="modal-figure-caption">Experiment 2: We varied the degree of mask inflation. Highly inflated masks resulted in the lushest hair.</p>' +
         '<img class="modal-figure" src="images/image-20.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Experiment 3: We fine-tuned models with a fixed DreamBooth identifier vs a unique identifier for each hairstyle in the text prompt. Unique identifiers worsened performance, weakening prompt adherance and increasing image corruption.</p>' +
-        '<img class="modal-figure" src="images/image-4.png" alt="Project photo">' +
+        '<img class="modal-figure" src="images/image-21.png" alt="Project photo">' +
         '<p class="modal-figure-caption">We obtained impressive and realistic results on a selfie of our teammate!</p>'
     },
     greenhouse: {
