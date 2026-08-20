@@ -520,6 +520,11 @@
     object-fit:cover;
     margin:22px 0 8px;
   }
+  .modal-figure.natural{          /* ← new rule added here */
+    aspect-ratio:auto;
+    height:auto;
+    object-fit:contain;
+  }
   .modal-figure-caption{
     font-size:0.85rem;
     color:var(--ink-soft);
@@ -1928,13 +1933,13 @@
       body: '' +
         '<p>A long time ago, in a galaxy far, far away, citizens of the Galactic Republic used the ancient alphabet of Aurebesh to write in Galactic Basic, aka English. Our ML pipeline takes in an Aurebesh message e.g. a scene from a Star Wars movie, classifies each letter, and outputs its English translation.</p>' +
         '<p>We fine-tuned a ResNet-50 and Vision Transformer on our custom Aurebesh dataset with image augmentations, which achieved 94% and 96% classification accuracy respectively on our fixed test set.</p>' +
-        '<img class="modal-figure" src="images/image-33.png" alt="Project photo">' +
+        '<img class="modal-figure natural" src="images/image-33.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Compiling our custom Aurebesh dataset of 520 images in 26 letters.</p>' +
-        '<img class="modal-figure" src="images/image-34.png" alt="Project photo">' +
+        '<img class="modal-figure natural" src="images/image-34.png" alt="Project photo">' +
         '<p class="modal-figure-caption">We experimented with data augmentation techniques (rotations and blurs) to overcome the insufficient training data. The Vision Transformer trained with both rotations and blurs achieved the highest classification accuracy of 96%.</p>' +
-        '<img class="modal-figure" src="images/image-35.png" alt="Project photo">' +
+        '<img class="modal-figure natural" src="images/image-35.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Results for Message 1: JOIN THE FORCE OR WE LL FORCE YOU TO JOIN (CMU Star Wars Club Slogan)</p>' +
-        '<img class="modal-figure" src="images/image-36.png" alt="Project photo">' +
+        '<img class="modal-figure natural" src="images/image-36.png" alt="Project photo">' +
         '<p class="modal-figure-caption">Results for Message 2: THE QUICK JAWAS HAVE IMMOBILIZED PAT IN A FAR GALAXY (Has all letters of the English alphabet)</p>'
     },
     starwarsclub: {
