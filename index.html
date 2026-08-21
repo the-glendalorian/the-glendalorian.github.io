@@ -326,6 +326,18 @@
     margin-top:6px;
   }
 
+  .experience-category{margin-bottom:48px;}
+  .experience-category:last-child{margin-bottom:0;}
+  .experience-category-title{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    font-weight:500;
+    color:var(--ink);
+    margin:0 0 8px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+
   /* ---------- PROJECTS ---------- */
   .projects-category{margin-bottom:48px;}
   .projects-category:last-child{margin-bottom:0;}
@@ -1245,76 +1257,126 @@
 <section id="experience" class="reveal">
   <div class="wrap">
     <div class="section-label">Experience</div>
-    <ul class="timeline">
-      <li class="timeline-item">
-        <div class="timeline-date-col">
-          <div class="timeline-date">May 2024 — Present</div>
-          <img class="timeline-logo" src="images/image-63.png" alt="Carnegie Mellon University Robotics Institute logo">
-        </div>
-        <div class="timeline-body">
-          <h4>Research Assistant</h4>
-          <div class="timeline-org">Carnegie Mellon University Robotics Institute</div>
-          <ul class="timeline-bullets">
-            <li>Developed an AI-driven tracking and localization system to assist older adults in locating kitchen items.</li>
-            <li>Engineered an object detector leveraging Grounded SAM 2 and prompt engineering to identify 20+ kitchen items across diverse meal-preparation scenarios.</li>
-            <li>Designed a scalable registration pipeline using RGB-D depth cameras to enable system deployment across varied kitchen environments.</li>
-            <li>Evaluated system performance on real-world video datasets of 8 older adult participants preparing meals.</li>
-            <li><strong>Recognition & Funding:</strong> Awarded the CMU Summer Undergraduate Research Fellowship (SURF 2025).</li>
-            <li><strong>Advisors:</strong> Prof. Reid Simmons, Prof. Zackory Erickson, and Prof. Pragathi Praveena.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item">
-        <div class="timeline-date-col">
-          <div class="timeline-date">Jan 2025 — May 2026</div>
-          <img class="timeline-logo" src="images/image-64.png" alt="Carnegie Mellon University School of Computer Science logo">
-        </div>
-        <div class="timeline-body">
-          <h4>Head Teaching Assistant, Concepts of AI Course (07-180)</h4>
-          <div class="timeline-org">Carnegie Mellon University School of Computer Science</div>
-          <ul class="timeline-bullets">
-            <li>Led a team of 7 Teaching Assistants overseeing course logistics, grading, and recitations for 100+ freshman CS students.</li>
-            <li>Directed curriculum delivery covering core AI domains, including generative AI, neural networks, reinforcement learning (RL), and AI ethics.</li>
-            <li>Authored original assignments, exams, and a custom 2048 RL agent competition to promote hands-on algorithm implementation.</li>
-            <li>Conducted weekly recitations and office hours, achieving a 5.0 / 5.0 TA evaluation rating from students.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item">
-        <div class="timeline-date-col">
-          <div class="timeline-date">Jul 2021 — May 2022</div>
-          <img class="timeline-logo" src="images/image-65.png" alt="Defense Science Organization National Laboratories Singapore logo">
-        </div>
-        <div class="timeline-body">
-          <h4>Deep Learning Research Intern</h4>
-          <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
-          <ul class="timeline-bullets">
-            <li>Conceptualized and implemented a Transformer-based predictive model to forecast future high-infectivity COVID-19 viral variants.</li>
-            <li>Achieved 90% accuracy in protein-protein interaction prediction by incorporating Masked Language Modeling (MLM), Sharpness-Aware Minimization (SAM), and custom data augmentation techniques.</li>
-            <li><strong>Published as First Author:</strong> "Predicting More Infectious Virus Variants for Pandemic Prevention through Deep Learning" (CMLA 2022 & IJAIA 2022).</li>
-            <li><strong>Awards:</strong> Singapore Science and Engineering Fair (SSEF) 2022 Gold Award; Regeneron ISEF 2022 Atlanta USA Finalist.</li>
-            <li><strong>Advisor:</strong> Dr. Bingquan Shen.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item">
-        <div class="timeline-date-col">
-          <div class="timeline-date">May 2020 — Jun 2021</div>
-          <img class="timeline-logo" src="images/image-65.png" alt="Defense Science Organization National Laboratories Singapore logo">
-        </div>
-        <div class="timeline-body">
-          <h4>Machine Learning Research Intern</h4>
-          <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
-          <ul class="timeline-bullets">
-            <li>Architected a deep convolutional neural network for predicting colorectal cancer risks from stool images with 94% accuracy.</li>
-            <li>Addressed dataset scarcity by fine-tuning a DiffAugment StyleGAN2 pipeline to synthesize realistic, high-fidelity stool images.</li>
-            <li><strong>Published as First Author:</strong> "Stool Recognition for Colorectal Cancer Detection through Deep Learning" (IEEE ICMI 2025).</li>
-            <li><strong>Awards:</strong> SSEF 2021 Gold Award; Global Youth & Science Technology Bowl Hong Kong (GYSTB) Grand Prize (Bronze); Singapore University of Technology and Design Research & Innovation Award in Healthcare.</li>
-            <li><strong>Advisor:</strong> Dr. Bingquan Shen.</li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+ 
+    <div class="experience-category">
+      <h3 class="experience-category-title">Research Experience</h3>
+      <ul class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">May 2024 — Present</div>
+            <img class="timeline-logo" src="images/image-63.png" alt="Carnegie Mellon University Robotics Institute logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Research Assistant</h4>
+            <div class="timeline-org">Carnegie Mellon University Robotics Institute</div>
+            <ul class="timeline-bullets">
+              <li>Developed an AI-driven tracking and localization system to assist older adults in locating kitchen items.</li>
+              <li>Engineered an object detector leveraging Grounded SAM 2 and prompt engineering to identify 20+ kitchen items across diverse meal-preparation scenarios.</li>
+              <li>Designed a scalable registration pipeline using RGB-D depth sensors to enable zero-shot system deployment across varied kitchen environments.</li>
+              <li>Evaluated system performance on real-world video datasets of 8 older adult participants preparing meals.</li>
+              <li><strong>Recognition & Funding:</strong> Awarded the CMU Summer Undergraduate Research Fellowship (SURF 2025).</li>
+              <li><strong>Advisors:</strong> Prof. Reid Simmons, Prof. Zackory Erickson, and Prof. Pragathi Praveena.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">Jul 2021 — May 2022</div>
+            <img class="timeline-logo" src="images/image-65.png" alt="Defense Science Organization National Laboratories Singapore logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Deep Learning Research Intern</h4>
+            <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
+            <ul class="timeline-bullets">
+              <li>Conceptualized and implemented a Transformer-based predictive model to forecast future high-infectivity COVID-19 viral variants.</li>
+              <li>Achieved 90% accuracy in protein-protein interaction prediction by incorporating Masked Language Modeling (MLM), Sharpness-Aware Minimization (SAM), and custom data augmentation techniques.</li>
+              <li><strong>Published as First Author:</strong> "Predicting More Infectious Virus Variants for Pandemic Prevention through Deep Learning" (CMLA 2022 & IJAIA 2022).</li>
+              <li><strong>Awards:</strong> Singapore Science and Engineering Fair (SSEF) 2022 Gold Award; Regeneron ISEF 2022 Finalist.</li>
+              <li><strong>Advisor:</strong> Dr. Bingquan Shen.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">May 2020 — Jun 2021</div>
+            <img class="timeline-logo" src="images/image-65.png" alt="Defense Science Organization National Laboratories Singapore logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Machine Learning Research Intern</h4>
+            <div class="timeline-org">Defense Science Organization National Laboratories Singapore</div>
+            <ul class="timeline-bullets">
+              <li>Architected a deep convolutional neural network for predicting colorectal cancer risks from stool images with 94% accuracy.</li>
+              <li>Addressed severe dataset scarcity by fine-tuning a DiffAugment StyleGAN2 pipeline to synthesize realistic, high-fidelity medical images.</li>
+              <li><strong>Published as First Author:</strong> "Stool Recognition for Colorectal Cancer Detection through Deep Learning" (IEEE ICMI 2025).</li>
+              <li><strong>Awards:</strong> SSEF 2021 Gold Award; Global Youth & Science Technology Bowl Hong Kong (GYSTB) Grand Prize (Bronze); Singapore University of Technology and Design Research & Innovation Award in Healthcare.</li>
+              <li><strong>Advisor:</strong> Dr. Bingquan Shen.</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+ 
+    <div class="experience-category">
+      <h3 class="experience-category-title">Teaching Experience</h3>
+      <ul class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">Jan 2025 — May 2026</div>
+            <img class="timeline-logo" src="images/image-64.png" alt="Carnegie Mellon University School of Computer Science logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Head Teaching Assistant, Concepts of AI Course (07-180)</h4>
+            <div class="timeline-org">Carnegie Mellon University School of Computer Science</div>
+            <ul class="timeline-bullets">
+              <li>Led a team of 7 Teaching Assistants overseeing course logistics, grading, and recitations for 100+ freshman CS students.</li>
+              <li>Directed curriculum delivery covering core AI domains, including generative AI, neural networks, reinforcement learning (RL), and AI ethics.</li>
+              <li>Authored original assignments, exams, and a custom 2048 RL agent competition to promote hands-on algorithm implementation.</li>
+              <li>Conducted weekly recitations and office hours, achieving a 5.0 / 5.0 TA evaluation rating from students.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">May 2021 — Jun 2021</div>
+            <img class="timeline-logo" src="images/image-66.png" alt="Google Code in the Community Singapore logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Coding Mentor</h4>
+            <div class="timeline-org">Google Code in the Community Singapore</div>
+            <ul class="timeline-bullets">
+              <li>Mentored underprivileged Grade 3-6 students in coding every weekend.</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+ 
+    <div class="experience-category">
+      <h3 class="experience-category-title">Volunteer Experience</h3>
+      <ul class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">Jul 2026</div>
+            <img class="timeline-logo" src="images/image-67.png" alt="IEEE Spoken Language Technologies Conference logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Conference Reviewer</h4>
+            <div class="timeline-org">IEEE Spoken Language Technologies Conference 2026, Sicily, Italy</div>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-date-col">
+            <div class="timeline-date">Aug 2025</div>
+            <img class="timeline-logo" src="images/image-68.png" alt="European Alliance for Innovation ArtsIT Conference logo">
+          </div>
+          <div class="timeline-body">
+            <h4>Conference Reviewer</h4>
+            <div class="timeline-org">14th European Alliance for Innovation (EAI) International Conference: ArtsIT, Interactivity & Game Creation 2025, Dubai, UAE</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+ 
   </div>
 </section>
 
